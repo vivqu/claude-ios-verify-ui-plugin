@@ -32,15 +32,17 @@ Before running anything, establish what UI changes should be validated, in prior
 
 All tools below are using the `XcodeBuildMCP` tool.
 
-1. Follow [references/xcodebuildmcp-session-setup.md](references/xcodebuildmcp-session-setup.md) to ensure session defaults are configured.
+1. Verify XcodeBuildMCP is available by checking whether `session_show_defaults` exists as a callable tool. If it does not, stop immediately and tell the user: "This skill requires XcodeBuildMCP. Install it at [https://github.com/getsentry/XcodeBuildMCP](https://github.com/getsentry/XcodeBuildMCP) and add it as a Claude Code MCP server, then try again."
 
-2. Call `session_show_defaults` to confirm project, scheme, and simulator are all set. If any are still missing, stop and ask the user to configure them.
+2. Follow [references/xcodebuildmcp-session-setup.md](references/xcodebuildmcp-session-setup.md) to ensure session defaults are configured.
 
-3. Call `build_run_sim` to build and launch the app on the simulator.
+3. Call `session_show_defaults` to confirm project, scheme, and simulator are all set. If any are still missing, stop and ask the user to configure them.
 
-4. Call `screenshot` to capture the current simulator screen.
+4. Call `build_run_sim` to build and launch the app on the simulator.
 
-5. Evaluate the screenshot against the UI changes identified above. Apply all loaded conventions (built-in plus any supplemental). Report the result:
+5. Call `screenshot` to capture the current simulator screen.
+
+6. Evaluate the screenshot against the UI changes identified above. Apply all loaded conventions (built-in plus any supplemental). Report the result:
    - **Pass**: The changes look correct — display the screenshot and briefly describe what was verified.
    - **Fail (build/launch)**: Build or launch failed — show the error output and stop.
    - **Fail (visual or conventions)**: The app launched but the expected changes are not visible, look wrong, or violate UI conventions (e.g. unsafe layout, missing accessibility identifiers, insufficient contrast) — display the screenshot and describe specifically what is incorrect or non-compliant.

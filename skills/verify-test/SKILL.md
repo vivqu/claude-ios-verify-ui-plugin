@@ -35,13 +35,15 @@ Before running anything, establish the test scope in priority order:
 
 All tools below are using the `XcodeBuildMCP` tool.
 
-1. Follow [references/xcodebuildmcp-session-setup.md](references/xcodebuildmcp-session-setup.md) to ensure session defaults are configured.
+1. Verify XcodeBuildMCP is available by checking whether `session_show_defaults` exists as a callable tool. If it does not, stop immediately and tell the user: "This skill requires XcodeBuildMCP. Install it at [https://github.com/getsentry/XcodeBuildMCP](https://github.com/getsentry/XcodeBuildMCP) and add it as a Claude Code MCP server, then try again."
 
-2. Call `session_show_defaults` to confirm project, scheme, and simulator are all set. If any are still missing, stop and ask the user to configure them.
+2. Follow [references/xcodebuildmcp-session-setup.md](references/xcodebuildmcp-session-setup.md) to ensure session defaults are configured.
 
-3. Call `test_sim` to build and run the tests, using any filter determined above.
+3. Call `session_show_defaults` to confirm project, scheme, and simulator are all set. If any are still missing, stop and ask the user to configure them.
 
-4. Report the result:
+4. Call `test_sim` to build and run the tests, using any filter determined above.
+
+5. Report the result:
    - **Pass**: All tests passed — report the total number of tests run, note if a filter was applied, and confirm everything passed.
    - **Fail (build)**: Build failed before tests ran — show the error output and stop.
    - **Fail (test failures)**: One or more tests failed — list each failing test by name with its failure message, and report the overall count (e.g. "3 of 47 tests failed").

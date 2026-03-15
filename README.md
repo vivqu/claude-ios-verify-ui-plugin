@@ -12,7 +12,7 @@ A Claude Code plugin that builds, runs, and visually verifies iOS apps on a simu
 
 ## Prerequisites
 
-- Xcode 16+ with at least one iOS 18+ simulator installed
+- Xcode with an iOS simulator matching your project's deployment target (defaults to iOS 18+ if not set)
 - [XcodeBuildMCP](https://github.com/cameroncooke/XcodeBuildMCP) configured as a Claude Code MCP server
 
 ## Installation
