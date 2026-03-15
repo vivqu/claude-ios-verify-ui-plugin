@@ -1,0 +1,34 @@
+{
+  "name": "ios-verify-ui-plugin-marketplace",
+  "owner": {
+    "name": "Vivian Qu",
+    "email": "hello@vivqu.com",
+    "url": "https://github.com/vivqu"
+  },
+  "metadata": {
+    "description": "iOS UI verification automation plugin for Claude Code",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "ios-verify-ui",
+      "source": {
+        "source": "github",
+        "repo": "vivqu/claude-ios-verify-ui-plugin"
+      },
+      "description": "Build, test, and run visual verification of iOS apps on a simulator using XcodeBuildMCP.",
+      "keywords": [
+        "xcode",
+        "ios",
+        "simulator",
+        "testing",
+        "ui",
+        "accessibility",
+        "automation",
+        "verification",
+        "hig",
+        "human interface guidelines"
+      ]
+    }
+  ]
+}
